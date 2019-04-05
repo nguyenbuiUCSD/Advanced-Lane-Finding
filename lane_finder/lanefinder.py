@@ -7,21 +7,21 @@ class Lanefinder:
         
         print ("Done ...")
         
-    def abs_sobel_threshold(self, image, orient='x', threshold_min=0, threshold_max=255):
+    def abs_sobel_threshold(self, image, orient='x', sobel_kernel=3, sobel_threshold=(0, 255)):
 
         # Convert to grayscale
         gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
         # Apply x or y gradient with the OpenCV Sobel() function
         # and take the absolute value
         if orient == 'x':
-            abs_sobel = np.absolute(cv2.Sobel(gray, cv2.CV_64F, 1, 0))
+            abs_sobel = np.absolute(cv2.Sobel(gray, cv2.CV_64F, 1, 0,ksize=sobel_kernel))
         if orient == 'y':
-            abs_sobel = np.absolute(cv2.Sobel(gray, cv2.CV_64F, 0, 1))
+            abs_sobel = np.absolute(cv2.Sobel(gray, cv2.CV_64F, 0, 1,ksize=sobel_kernel))
         # Rescale back to 8 bit integer
         scaled_sobel = np.uint8(255*abs_sobel/np.max(abs_sobel))
         # Create a copy and apply inclusive (>=, <=) thresholds
         binary_output = np.zeros_like(scaled_sobel)
-        binary_output[(scaled_sobel >= threshold_min) & (scaled_sobel <= threshold_max)] = 1
+        binary_output[(scaled_sobel >= sobel_threshold[0]) & (scaled_sobel <= sobel_threshold[1])] = 1
 
         # Return the result
         return binary_output
@@ -58,3 +58,16 @@ class Lanefinder:
 
         # Return the binary image
         return binary_output
+    
+    def hls_color_threshold(self, image, h_threshold=(256, 256), l_threshold=(256, 256), s_threshold=(256, 256)):
+        hls = cv2.cvtColor(image, cv2.COLOR_RGB2HLS)
+        binary_output = np.zeros_like(image[:,:,0])
+        binary_output[(hls[:,:,0] >= h_threshold[0]) & (hls[:,:,0] <= h_threshold[1])] = 1
+        binary_output[(hls[:,:,1] >= l_threshold[0]) & (hls[:,:,1] <= l_threshold[1])] = 1
+        binary_output[(hls[:,:,2] >= s_threshold[0]) & (hls[:,:,2] <= s_threshold[1])] = 1
+        return binary_output
+    
+    def combined_threshold(self, gradx, grady, mag_binary, dir_binary):
+        combined = np.zeros_like(dir_binary)
+        combined[((gradx == 1) & (grady == 1)) | ((mag_binary == 1) & (dir_binary == 1))] = 1
+        return combined
