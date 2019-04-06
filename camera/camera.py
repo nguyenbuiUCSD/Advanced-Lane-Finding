@@ -159,19 +159,3 @@ class Camera:
     def undistort(self, image):
         image_undistorted = cv2.undistort(image, self.mtx, self.dist, None, self.mtx)
         return image_undistorted
-
-    
-    def set_perspective_transform(self, src,dst):
-        M = cv2.getPerspectiveTransform(src, dst)
-        MR = cv2.getPerspectiveTransform(dst, src)
-        self.M = M
-        self.MR = MR
-        return M, MR
-    
-    def perspective_transform(self, image):
-        warped = cv2.warpPerspective(image, self.M, (image.shape[1],image.shape[0]), flags=cv2.INTER_LINEAR)
-        return warped
-        
-    def perspective_reverse_transform(self, image):
-        warped = cv2.warpPerspective(image, self.MR, (image.shape[1],image.shape[0]), flags=cv2.INTER_LINEAR)
-        return warped
