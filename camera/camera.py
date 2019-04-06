@@ -117,43 +117,46 @@ class Camera:
         
         
     def calibrate(self, calib_images_folder, nx, ny):
-            """Calibrate camera using images from calid_images_folder"""
+        """Calibrate camera using images from calid_images_folder"""
 
-            # +-----------------+
-            # | FINDING CORNERS |
-            # +-----------------+
-            # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
-            objp = np.zeros((nx*ny,3), np.float32)
-            objp[:,:2] = np.mgrid[0:nx, 0:ny].T.reshape(-1,2)
-            # Arrays to store object points and image points from all the images.
-            objpoints = [] # 3d points in real world space
-            imgpoints = [] # 2d points in image plane.
-            print ("Finding corners ... ")        
-            for image_link in os.listdir(calib_images_folder):
-                image = mpimg.imread(calib_images_folder+image_link)
-                ret, corners = self.find_chessboard_corners(image, nx, ny)
-                if ret == True:
-                    objpoints.append(objp)
-                    imgpoints.append(corners)
-            print ("Done ...")
-
-            # +------------------+
-            # | CALIBRATE CAMERA |
-            # +------------------+
-            print ("Calibrating Camera ... ")
-            image_link = random.choice(os.listdir(calib_images_folder))
+        # +-----------------+
+        # | FINDING CORNERS |
+        # +-----------------+
+        # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
+        objp = np.zeros((nx*ny,3), np.float32)
+        objp[:,:2] = np.mgrid[0:nx, 0:ny].T.reshape(-1,2)
+        # Arrays to store object points and image points from all the images.
+        objpoints = [] # 3d points in real world space
+        imgpoints = [] # 2d points in image plane.
+        print ("Finding corners ... ")        
+        for image_link in os.listdir(calib_images_folder):
             image = mpimg.imread(calib_images_folder+image_link)
-            gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-            ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
-            self.mtx = mtx
-            self.dist = dist
-            self.is_calibrated = True
-            # Save the camera calibration result for later use (we won't worry about rvecs / tvecs)
-            dist_pickle = {}
-            dist_pickle["mtx"] = mtx
-            dist_pickle["dist"] = dist
-            pickle.dump( dist_pickle, open( "camera_config/"+self.name+".conf", "wb" ) )
-            print ("Camera configuration has been written to " + "camera_config/" + self.name+".conf")
-            print ("Done ...")
+            ret, corners = self.find_chessboard_corners(image, nx, ny)
+            if ret == True:
+                objpoints.append(objp)
+                imgpoints.append(corners)
+        print ("Done ...")
 
-        
+        # +------------------+
+        # | CALIBRATE CAMERA |
+        # +------------------+
+        print ("Calibrating Camera ... ")
+        image_link = random.choice(os.listdir(calib_images_folder))
+        image = mpimg.imread(calib_images_folder+image_link)
+        gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+        ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
+        self.mtx = mtx
+        self.dist = dist
+        self.is_calibrated = True
+        # Save the camera calibration result for later use (we won't worry about rvecs / tvecs)
+        dist_pickle = {}
+        dist_pickle["mtx"] = mtx
+        dist_pickle["dist"] = dist
+        pickle.dump( dist_pickle, open( "camera_config/"+self.name+".conf", "wb" ) )
+        print ("Camera configuration has been written to " + "camera_config/" + self.name+".conf")
+        print ("Done ...")
+
+    def undistort(self, image):
+        image_undistorted = cv2.undistort(image, self.mtx, self.dist, None, self.mtx)
+        return image_undistorted
+
