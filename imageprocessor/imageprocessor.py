@@ -91,7 +91,7 @@ class Imageprocessor:
     
     def combined_threshold_roi(self, gradx, grady, mag_binary, dir_binary, hls_binary,roi_binary):
         combined = np.zeros_like(dir_binary)
-        combined[(((gradx == 1)&(grady == 1)) | ((mag_binary == 1)&(dir_binary == 1)) & (hls_binary==1)) & (roi_binary==1)] = 1
+        combined[(((gradx == 1)&(grady == 1)) | ((mag_binary == 1)&(dir_binary == 1)) | (hls_binary==1)) & (roi_binary==1)] = 1
         return combined
     
     def set_perspective_transform(self, src,dst):
