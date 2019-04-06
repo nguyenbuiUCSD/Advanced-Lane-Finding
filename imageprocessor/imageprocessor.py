@@ -67,6 +67,14 @@ class Imageprocessor:
         binary_output[(hls[:,:,2] >= s_threshold[0]) & (hls[:,:,2] <= s_threshold[1])] = 1
         return binary_output
     
+    def hls_color_threshold_h_and_s_or_l(self, image, h_threshold=(256, 256), l_threshold=(256, 256), s_threshold=(256, 256)):
+        hls = cv2.cvtColor(image, cv2.COLOR_RGB2HLS)
+        binary_output = np.zeros_like(image[:,:,0])
+        binary_output[(hls[:,:,1] >= l_threshold[0]) & (hls[:,:,1] <= l_threshold[1])] = 1
+        binary_output[(hls[:,:,2] >= s_threshold[0]) & (hls[:,:,2] <= s_threshold[1])&\
+                      (hls[:,:,0] >= h_threshold[0]) & (hls[:,:,0] <= h_threshold[1])] = 1
+        return binary_output
+    
     def region_of_interest(self, image, vertices):
         #defining a blank mask to start with
         binary_output = np.zeros_like(image[:,:,0])  
@@ -75,9 +83,15 @@ class Imageprocessor:
         cv2.fillPoly(binary_output, vertices, 1)
         return binary_output
     
+    def combined_threshold(self, gradx, grady, mag_binary, dir_binary):
+        combined = np.zeros_like(dir_binary)
+        combined[(((gradx == 1)&(grady == 1)) | ((mag_binary == 1)&(dir_binary == 1)))] = 1
+        return combined
+    
+    
     def combined_threshold_roi(self, gradx, grady, mag_binary, dir_binary, hls_binary,roi_binary):
         combined = np.zeros_like(dir_binary)
-        combined[(((gradx == 1)&(grady == 1)) | ((mag_binary == 1)&(dir_binary == 1)) | (hls_binary==1)) & (roi_binary==1)] = 1
+        combined[(((gradx == 1)&(grady == 1)) | ((mag_binary == 1)&(dir_binary == 1)) & (hls_binary==1)) & (roi_binary==1)] = 1
         return combined
     
     def set_perspective_transform(self, src,dst):
