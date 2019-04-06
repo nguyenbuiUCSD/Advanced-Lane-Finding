@@ -67,9 +67,17 @@ class Imageprocessor:
         binary_output[(hls[:,:,2] >= s_threshold[0]) & (hls[:,:,2] <= s_threshold[1])] = 1
         return binary_output
     
-    def combined_threshold(self, gradx, grady, mag_binary, dir_binary, hls_binary):
+    def region_of_interest(self, image, vertices):
+        #defining a blank mask to start with
+        binary_output = np.zeros_like(image[:,:,0])  
+
+        #filling pixels inside the polygon defined by "vertices" with the 1    
+        cv2.fillPoly(binary_output, vertices, 1)
+        return binary_output
+    
+    def combined_threshold_roi(self, gradx, grady, mag_binary, dir_binary, hls_binary,roi_binary):
         combined = np.zeros_like(dir_binary)
-        combined[((gradx == 1) & (grady == 1)) | ((mag_binary == 1) & (dir_binary == 1)) | (hls_binary==1)] = 1
+        combined[(((gradx == 1)&(grady == 1)) | ((mag_binary == 1)&(dir_binary == 1)) | (hls_binary==1)) & (roi_binary==1)] = 1
         return combined
     
     def set_perspective_transform(self, src,dst):
