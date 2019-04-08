@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 import cv2
 
 class Lanefinder:
@@ -41,6 +42,8 @@ class Lanefinder:
             # convolve the window into the vertical slice of the image
             image_layer = np.sum(image[int(image.shape[0]-(level+1)*self.window_height):\
                                        int(image.shape[0]-level*self.window_height),:], axis=0)
+            plt.figure()
+            plt.plot(image_layer)
             conv_signal = np.convolve(window, image_layer)
             # Find the best left centroid by using past left center as a reference
             # Use window_width/2 as offset because convolution signal reference is at right side of window, not center of window
