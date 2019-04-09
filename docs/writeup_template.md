@@ -44,9 +44,9 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 ```python
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 ```
-I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
+I applied this distortion correction to the test image using the `camera.undistort()` function and obtained this result: 
 
-![camera](https://user-images.githubusercontent.com/17399214/55820265-8fcf1280-5aaf-11e9-88c2-a89f6d2d1752.png)
+![camera1](https://user-images.githubusercontent.com/17399214/55820490-14ba2c00-5ab0-11e9-8154-529b26208fb7.png)
 
 ### Pipeline (single images)
 
@@ -59,7 +59,8 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.
 
-![alt text][image3]
+![undistorted](https://user-images.githubusercontent.com/17399214/55820658-78dcf000-5ab0-11e9-9a2e-d354b4fba897.png)
+
 
 #### 3. Perspective transform
 
