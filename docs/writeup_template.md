@@ -95,8 +95,20 @@ imageprocessor.set_perspective_transform(src,dst)
 ![undistorted](https://user-images.githubusercontent.com/17399214/55820658-78dcf000-5ab0-11e9-9a2e-d354b4fba897.png)
 
 #### 4. Find lane-line pixels and fit their positions with a polynomial?
+Using convolutional algorithm to mark the hot pixel in binary image
+![fitting](https://user-images.githubusercontent.com/17399214/55821717-f7d32800-5ab2-11e9-933f-d83fa469c9bb.png)
 
 #### 5. Radius of curvature and the position of the vehicle with respect to center.
+Radius and cervature are calculated in this fucntion:
+```python
+def fit_curve(self, pts):
+        pts_array = np.array(pts)
+        poly_fit = np.polyfit(pts_array[:,1], pts_array[:,0], 2)
+        y_eval = np.max(pts_array[:,1])
+        curverad = ((1 + (2*poly_fit[0]*y_eval + poly_fit[1])**2)**1.5) / np.absolute(2*poly_fit[0])
+        return poly_fit, curverad
+```
+![curve](https://user-images.githubusercontent.com/17399214/55821821-32d55b80-5ab3-11e9-8f66-b34cad35cab0.png)
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
