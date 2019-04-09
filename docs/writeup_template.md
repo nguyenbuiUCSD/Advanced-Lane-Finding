@@ -114,5 +114,8 @@ Here's a [link to my video result](test_videos_output/project_video.mp4)
 ### Discussion
 
 #### 1. Problems / issues
-
+- Performance: this algorithm run quite slow.
+- Turnable parametters: Al parametters are hard to twist. A set of parametters will not work on different road conditions
 #### 2. Future improvement
+- Using AI for lane mark segmentation
+- Utilize paralel computing to improve performance
