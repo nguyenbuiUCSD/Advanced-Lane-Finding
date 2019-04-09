@@ -2,12 +2,12 @@
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 In this project, we create a lane finding algorithm that find and mark the lane line in each frame.  
 
-# File Structure
+### File Structure
 camera: camera class. contain files use for camera calibration and configuration
 imageprocessor: image processor class. contain functions for processing image
 lanefinder: lane finder class. fucntion for finding lane lines
 
-# The Project
+### The Project
 ---
 
 The goals / steps of this project are the following:
