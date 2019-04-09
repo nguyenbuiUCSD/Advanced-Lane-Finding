@@ -3,9 +3,9 @@
 In this project, we create a lane finding algorithm that find and mark the lane line in each frame.  
 
 ### File Structure
-camera: camera class. contain files use for camera calibration and configuration
-imageprocessor: image processor class. contain functions for processing image
-lanefinder: lane finder class. fucntion for finding lane lines
+- camera: camera class. contain files use for camera calibration and configuration
+- imageprocessor: image processor class. contain functions for processing image
+- lanefinder: lane finder class. fucntion for finding lane lines
 
 ### The Project
 ---
