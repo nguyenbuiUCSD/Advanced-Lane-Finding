@@ -6,6 +6,7 @@ In this project, we create a lane finding algorithm that find and mark the lane 
 - camera: camera class. contain files use for camera calibration and configuration
 - imageprocessor: image processor class. contain functions for processing image
 - lanefinder: lane finder class. fucntion for finding lane lines
+- docs: document and writeup
 
 ### The Project
 ---
