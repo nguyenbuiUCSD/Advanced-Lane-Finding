@@ -52,14 +52,20 @@ I applied this distortion correction to the test image using the `camera.undisto
 
 #### 1. Distortion-corrected image.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+After calibrate camera and calculate the calibration and distortion coefficients, each image can be undistorted using `camera.undistort()` function:
+```python
+ def undistort(self, image):
+        image_undistorted = cv2.undistort(image, self.mtx, self.dist, None, self.mtx)
+        return image_undistorted
+```
+Here is the result:
+![undistorted](https://user-images.githubusercontent.com/17399214/55820658-78dcf000-5ab0-11e9-9a2e-d354b4fba897.png)
 
 #### 2. Color transforms, gradients and other thresholds
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.
 
-![undistorted](https://user-images.githubusercontent.com/17399214/55820658-78dcf000-5ab0-11e9-9a2e-d354b4fba897.png)
+
 
 
 #### 3. Perspective transform
