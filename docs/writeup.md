@@ -119,7 +119,7 @@ def fit_curve(self, pts):
 
 ### Pipeline (video)
 
-Here's a [link to my video result](test_videos_output/project_video.mp4)
+Here's a [link to my video result](https://github.com/nguyenbuiUCSD/Advanced-Lane-Finding/blob/master/test_videos_output/project_video.mp4)
 
 ---
 
