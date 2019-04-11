@@ -89,31 +89,37 @@ Magnitude is the mesurement of how strong the changing of each pixel compare to 
 
 ##### 2.2 Color Threshold
 
-######Color space:
+###### Color space:
 
 ![color space](https://user-images.githubusercontent.com/17399214/55936367-f6a51680-5bea-11e9-90fd-6ddd4a761256.png)
 
-######Real image:
+###### Image in seprated color channels:
 
 ![hls](https://user-images.githubusercontent.com/17399214/55936399-176d6c00-5beb-11e9-93ba-3088f392ca7f.png)
 
-######Hue threshold
+###### Hue threshold
 
 ![H](https://user-images.githubusercontent.com/17399214/55936516-65826f80-5beb-11e9-8fb9-a77dbcc1986f.png)
 
-######Lightness threshold
+###### Lightness threshold
 
 ![L](https://user-images.githubusercontent.com/17399214/55936519-66b39c80-5beb-11e9-83d6-f395ab369292.png)
 
-######Saturation threshold
+###### Saturation threshold
 
 ![S](https://user-images.githubusercontent.com/17399214/55936523-687d6000-5beb-11e9-8e76-d6c55e8fd23e.png)
 
-######Combined
+###### Combined
 
 ![CombinedHLS](https://user-images.githubusercontent.com/17399214/55936527-6adfba00-5beb-11e9-9ec8-12b6d0ce03d3.png)
 
+##### 2.3 Region of Interest
 
+![roi](https://user-images.githubusercontent.com/17399214/55936879-68319480-5bec-11e9-974a-ce2d3b34d808.png)
+
+##### Combined all thresholdings:
+
+![combined](https://user-images.githubusercontent.com/17399214/55936954-9b742380-5bec-11e9-90ee-81bf2faa2e2f.png)
 
 #### 3. Perspective transform
 
