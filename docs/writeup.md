@@ -63,10 +63,43 @@ Here is the result:
 
 #### 2. Color transforms, gradients and other thresholds
 
-##### 2.1 Sobel Operator
+##### 2.1 Gradient Threshold
+###### Sobel
 Applying the Sobel operator to an image is a way of taking the derivative of the image in the x or y direction. That mean we calculate the changing the value of each pixel in x or y direction. This is kernel of Sobel operator:
-![soble-operator](https://user-images.githubusercontent.com/17399214/55935467-8eedcc00-5be8-11e9-9fd8-b33d53554038.png)
+![Sobel](https://user-images.githubusercontent.com/17399214/55936098-315a7f00-5bea-11e9-895c-66da81049350.png)
+![Sobel X](https://user-images.githubusercontent.com/17399214/55935588-cceaf000-5be8-11e9-9f70-8a610a7feda6.png)
 ![Sobel Y](https://user-images.githubusercontent.com/17399214/55935606-d411fe00-5be8-11e9-9dcf-644c7291442a.png)
+![magnitude](https://user-images.githubusercontent.com/17399214/55936289-ae85f400-5bea-11e9-9b35-0a2b63656891.png)
+
+###### Magnitude
+Magnitude is the mesurement of how strong the changing of each pixel compare to its neighbors.
+![magnitudeabs](https://user-images.githubusercontent.com/17399214/55936178-6797fe80-5bea-11e9-8caa-ad35bc0c92c1.png)
+
+
+
+###### Direction
+![direction](https://user-images.githubusercontent.com/17399214/55936287-ad54c700-5bea-11e9-9605-5ae8b00ac479.png)
+
+
+##### 2.2 Color Threshold
+Color space:
+![color space](https://user-images.githubusercontent.com/17399214/55936367-f6a51680-5bea-11e9-90fd-6ddd4a761256.png)
+
+Real image:
+![hls](https://user-images.githubusercontent.com/17399214/55936399-176d6c00-5beb-11e9-93ba-3088f392ca7f.png)
+
+Hue threshold
+![H](https://user-images.githubusercontent.com/17399214/55936516-65826f80-5beb-11e9-8fb9-a77dbcc1986f.png)
+
+Lightness threshold
+![L](https://user-images.githubusercontent.com/17399214/55936519-66b39c80-5beb-11e9-83d6-f395ab369292.png)
+
+Saturation threshold
+![S](https://user-images.githubusercontent.com/17399214/55936523-687d6000-5beb-11e9-8e76-d6c55e8fd23e.png)
+
+Combined
+![CombinedHLS](https://user-images.githubusercontent.com/17399214/55936527-6adfba00-5beb-11e9-9ec8-12b6d0ce03d3.png)
+
 
 
 #### 3. Perspective transform
