@@ -79,13 +79,11 @@ Magnitude is the mesurement of how strong the changing of each pixel compare to 
 
 ![magnitudeabs](https://user-images.githubusercontent.com/17399214/55936178-6797fe80-5bea-11e9-8caa-ad35bc0c92c1.png)
 
-![magnitude](https://user-images.githubusercontent.com/17399214/55936289-ae85f400-5bea-11e9-9b35-0a2b63656891.png)
-
+![magnitude](https://user-images.githubusercontent.com/17399214/55937207-3b31b180-5bed-11e9-8ece-c06c22825ff3.png)
 
 ###### Direction
 
-![direction](https://user-images.githubusercontent.com/17399214/55936287-ad54c700-5bea-11e9-9605-5ae8b00ac479.png)
-
+![direction](https://user-images.githubusercontent.com/17399214/55937248-5b617080-5bed-11e9-9d54-3b0253c1166e.png)
 
 ##### 2.2 Color Threshold
 
@@ -95,29 +93,18 @@ Magnitude is the mesurement of how strong the changing of each pixel compare to 
 
 ###### Image in seprated color channels:
 
-![hls](https://user-images.githubusercontent.com/17399214/55936399-176d6c00-5beb-11e9-93ba-3088f392ca7f.png)
+![HLS](https://user-images.githubusercontent.com/17399214/55937308-8350d400-5bed-11e9-998c-1f2d87240cc2.png)
 
-###### Hue threshold
+###### HLS Thresholding
 
-![H](https://user-images.githubusercontent.com/17399214/55936516-65826f80-5beb-11e9-8fb9-a77dbcc1986f.png)
+![HLSTHRESHOLD](https://user-images.githubusercontent.com/17399214/55937401-bf843480-5bed-11e9-9cb1-25985ce31c65.png)
 
-###### Lightness threshold
-
-![L](https://user-images.githubusercontent.com/17399214/55936519-66b39c80-5beb-11e9-83d6-f395ab369292.png)
-
-###### Saturation threshold
-
-![S](https://user-images.githubusercontent.com/17399214/55936523-687d6000-5beb-11e9-8e76-d6c55e8fd23e.png)
-
-###### Combined
-
-![CombinedHLS](https://user-images.githubusercontent.com/17399214/55936527-6adfba00-5beb-11e9-9ec8-12b6d0ce03d3.png)
 
 ##### 2.3 Region of Interest
 
 ![roi](https://user-images.githubusercontent.com/17399214/55936879-68319480-5bec-11e9-974a-ce2d3b34d808.png)
 
-##### Combined all thresholdings:
+##### Combined All Thresholdings:
 
 ![combined](https://user-images.githubusercontent.com/17399214/55936954-9b742380-5bec-11e9-90ee-81bf2faa2e2f.png)
 
