@@ -63,9 +63,10 @@ Here is the result:
 
 #### 2. Color transforms, gradients and other thresholds
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.
-
-
+##### 2.1 Sobel Operator
+Applying the Sobel operator to an image is a way of taking the derivative of the image in the x or y direction. That mean we calculate the changing the value of each pixel in x or y direction. This is kernel of Sobel operator:
+![soble-operator](https://user-images.githubusercontent.com/17399214/55935467-8eedcc00-5be8-11e9-9fd8-b33d53554038.png)
+![Sobel Y](https://user-images.githubusercontent.com/17399214/55935606-d411fe00-5be8-11e9-9dcf-644c7291442a.png)
 
 
 #### 3. Perspective transform
